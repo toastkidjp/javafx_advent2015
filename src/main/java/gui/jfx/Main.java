@@ -14,7 +14,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /**
- * JavaFX による WikiClient.
+ * JavaFX による 学習用アプリケーション.
  * @author Toast kid
  * @version 0.0.1
  */
