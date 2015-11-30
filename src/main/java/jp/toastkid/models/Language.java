@@ -1,4 +1,4 @@
-package models;
+package jp.toastkid.models;
 
 /**
  * Script Language names.

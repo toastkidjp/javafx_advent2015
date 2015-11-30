@@ -58,15 +58,6 @@ eclipse {
     classpath.defaultOutputDir = file('build')
 }
 
-//ant configuration for creating double-clickable, self-contained JAR
-ant.importBuild 'build_jfx.xml'
-ant.antJavaFxJar = antJavafxJar
-ant.mainClassName = mainClassName
-ant.fallbackClassName = 'com.javafx.main.NoJavaFXFallback'
-ant.applicationVersion = version
-ant.applicationClasses = sourceSets.main.output.classesDir
-ant.applicationResources = sourceSets.main.output.resourcesDir
-
 //create some smarter looking start scripts
 startScripts {
     doLast {

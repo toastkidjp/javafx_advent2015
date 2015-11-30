@@ -1,4 +1,4 @@
-package gui.jfx;
+package jp.toastkid.gui.jfx.script;
 
 import java.io.File;
 import java.net.URL;
@@ -20,8 +20,8 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import libs.ScriptRunner;
-import models.Language;
+import jp.toastkid.libs.ScriptRunner;
+import jp.toastkid.models.Language;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -35,7 +35,7 @@ public final class MainController implements Initializable {
     /** run script keyboard shortcut. */
     private static final KeyCodeCombination RUN_SCRIPT
         = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.CONTROL_DOWN);
-    /** 画面下部のステータスラベル. */
+    /** 画面下部のstatusラベル. */
     @FXML
     public Label status;
     /** in script area. */
@@ -158,7 +158,7 @@ public final class MainController implements Initializable {
     }
 
     /**
-     * stage をセットする.
+     * stage を set.
      * @param stage
      */
     public final void setThisStage(final Stage stage) {
@@ -166,8 +166,8 @@ public final class MainController implements Initializable {
     }
 
     /**
-     * 引数で渡された文字列を画面下部のステータスラベルに表示する.
-     * @param str 文字列
+     * set status text.
+     * @param str status text
      */
     public final void setStatus(final String str) {
         status.setText(str);

@@ -1,4 +1,4 @@
-package gui.jfx;
+package jp.toastkid.gui.jfx.script;
 
 import java.io.File;
 import java.net.MalformedURLException;
