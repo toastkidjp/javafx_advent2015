@@ -27,7 +27,7 @@ import org.apache.commons.lang3.StringUtils;
 
 
 /**
- * JavaFX の WikiClient コントローラ.
+ * JavaFX のコントローラ.
  * @author Toast kid
  *
  */
