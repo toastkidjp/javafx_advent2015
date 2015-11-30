@@ -1,14 +1,12 @@
-package gui.jfx;
+package jp.toastkid.gui.jfx.script;
 
 import java.io.File;
 import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -45,7 +43,7 @@ public final class Main extends Application {
     }
 
     /**
-     * コントローラに stage を渡し、シーンファイルを読み込む.
+     * コントローラに stage を渡しシーンファイルを読込.
      * @param stage Stage オブジェクト
      * @return Scene オブジェクト
      */

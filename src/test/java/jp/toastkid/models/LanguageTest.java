@@ -1,7 +1,7 @@
-package functions;
+package jp.toastkid.models;
 
 import static org.junit.Assert.*;
-import models.Language;
+import jp.toastkid.models.Language;
 
 import org.junit.Test;
 

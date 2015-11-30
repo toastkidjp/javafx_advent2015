@@ -1,4 +1,4 @@
-package libs;
+package jp.toastkid.libs;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +10,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import models.Language;
+import jp.toastkid.models.Language;
 
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.groovy.control.CompilationFailedException;
@@ -18,7 +18,7 @@ import org.codehaus.groovy.jsr223.GroovyScriptEngineFactory;
 import org.python.jsr223.PyScriptEngineFactory;
 
 /**
- * Script を実行.
+ * Run Script.
  * @author Toast kid
  *
  */
