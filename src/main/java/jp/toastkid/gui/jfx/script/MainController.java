@@ -4,6 +4,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -22,8 +24,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import jp.toastkid.libs.ScriptRunner;
 import jp.toastkid.models.Language;
-
-import org.apache.commons.lang3.StringUtils;
 
 
 /**
@@ -67,7 +67,6 @@ public final class MainController implements Initializable {
             final URL url,
             final ResourceBundle resourcebundle
             ) {
-        func = new ScriptRunner();
         scriptLanguage.getSelectionModel().select(0);
         Platform.runLater( () -> {
             readStyleSheets();
@@ -89,7 +88,7 @@ public final class MainController implements Initializable {
     private void runScript() {
         final Language lang = Language.valueOf(
                 scriptLanguage.getSelectionModel().getSelectedItem().toUpperCase());
-        final String result = func.runScript(scripterInput.getText(), lang).get();
+        final String result = ScriptRunner.find(lang).run(scripterInput.getText()).get();
         if (StringUtils.isEmpty(result)) {
             return;
         }

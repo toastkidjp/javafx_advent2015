@@ -6,5 +6,5 @@ package jp.toastkid.models;
  *
  */
 public enum Language {
-    JAVASCRIPT, GROOVY, PYTHON;
+    JAVASCRIPT, GROOVY, PYTHON, CLOJURE;
 }

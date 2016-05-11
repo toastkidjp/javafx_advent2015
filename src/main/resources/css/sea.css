@@ -2,6 +2,11 @@
     -fx-base: rgba(100, 100, 200, 0.1);
     -fx-background: #C5CAE9;
 }
+
+.text {
+    -fx-font-family: 'Roboto';
+}
+
 .menu {
     -fx-base: rgba(0, 100, 200, 0.4);
     -fx-text-fill: white;
@@ -48,6 +53,11 @@
 }
 
 .left-tabs .list-cell:selected {
+    -fx-text-fill: white;
+    -fx-background-color: #002277;
+}
+
+.left-tabs .list-cell:hover {
     -fx-text-fill: white;
     -fx-background-color: #002277;
 }

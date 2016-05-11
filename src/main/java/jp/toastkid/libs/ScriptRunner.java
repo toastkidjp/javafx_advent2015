@@ -1,94 +1,60 @@
 package jp.toastkid.libs;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Optional;
 
-import javax.script.ScriptContext;
 import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 
 import jp.toastkid.models.Language;
 
-import org.apache.commons.lang3.StringUtils;
-import org.codehaus.groovy.control.CompilationFailedException;
-import org.codehaus.groovy.jsr223.GroovyScriptEngineFactory;
-import org.python.jsr223.PyScriptEngineFactory;
-
 /**
- * Run Script.
+ * Script language's script runner.
  * @author Toast kid
- *
+ * @see <a href="http://oshiete.goo.ne.jp/qa/4768100.html">System.out.printlnの出力先</a>
+ * @see <a href="http://tango.hatenablog.com/entry/20111118/1321647579">
+ * 変更した標準出力の出力先を元の標準出力に戻す方法</a>
  */
-public final class ScriptRunner {
+public abstract class ScriptRunner {
+
+    /** System line separator. */
+    protected static final String LINE_SEPARATOR = System.lineSeparator();
+
+    /** Groovy's runner. */
+    private static final ScriptRunner GROOVY  = new GroovyRunner();
+
+    /** JavaScript's runner. */
+    private static final ScriptRunner JS      = new JavaScriptRunner();
+
+    /** Python's runner. */
+    private static final ScriptRunner PYTHON  = new PythonRunner();
+
+    /** Clojure's runner. */
+    private static final ScriptRunner CLOJURE = new ClojureRunner();
+
+    /** ScriptEngine. */
+    protected ScriptEngine engine;
 
     /**
-     * run script.
-     * @param script
-     * @param language
-     * @return result run script.
+     * run and return result.
+     * @return reslut or empty.
      */
-    public Optional<String> runScript(final String script, final Language language) {
-        if (StringUtils.isEmpty(script)) {
-            return Optional.of("");
-        }
-        final ScriptEngine js = new ScriptEngineManager().getEngineByName("javascript");
-        final ScriptEngine python = new PyScriptEngineFactory().getScriptEngine();
-        final ScriptEngine groovy = new GroovyScriptEngineFactory().getScriptEngine();
+    public abstract Optional<String> run(final String script);
 
-        final StringBuilder result = new StringBuilder();
-        // redirect.
-        final StringWriter writer = new StringWriter();
-        try {
-            if (js != null) {
-                final ScriptContext context = js.getContext();
-                context.setWriter(writer);
-                context.setErrorWriter(writer);
-            }
-            if (python != null) {
-                final ScriptContext context = python.getContext();
-                context.setWriter(new PrintWriter(writer));
-                context.setErrorWriter(new PrintWriter(writer));
-            }
-            if (groovy != null) {
-                final ScriptContext context = groovy.getContext();
-                context.setWriter(new PrintWriter(writer));
-                context.setErrorWriter(new PrintWriter(writer));
-            }
-
-            final java.lang.Object run;
-            switch (language) {
-                case JAVASCRIPT:
-                    run = js.eval(script);
-                    break;
-                case PYTHON:
-                    run = python.eval(script);
-                    break;
-                case GROOVY:
-                default:
-                    run = groovy.eval(script);
-                    break;
-            }
-            result.append(writer.toString()).append(System.lineSeparator());
-            if (run != null) {
-                result.append("return = ").append(run.toString());
-            }
-            writer.close();
-        } catch (final CompilationFailedException | IOException | ScriptException e) {
-            e.printStackTrace();
-            result.append("Occurred Exception.").append(System.lineSeparator())
-                .append(e.getMessage());
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (final IOException e) {
-                    e.printStackTrace();
-                }
-            }
+    /**
+     * file の拡張子から適切な ScriptEngine を返す.
+     * @param fileName file name contains extention.
+     * @return appropriate ScriptEngine.
+     */
+    public static ScriptRunner find(final Language languageName) {
+        switch (languageName) {
+            case JAVASCRIPT:
+                return JS;
+            case CLOJURE:
+                return CLOJURE;
+            case PYTHON:
+                return PYTHON;
+            case GROOVY:
+            default:
+                return GROOVY;
         }
-        return Optional.of(result.toString());
     }
 }

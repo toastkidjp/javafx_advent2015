@@ -1,6 +1,6 @@
 .root {
-    -fx-base: rgba(0, 200, 0, 0.1);
-    -fx-background: #C5E9CA;
+    -fx-base: rgba(200, 200, 0, 0.1);
+    -fx-background: #E9E9C5;
 }
 
 .text {
@@ -8,32 +8,28 @@
 }
 
 .menu {
-    -fx-base: rgba(0, 200, 100, 0.5);
+    -fx-base: rgba(200, 170, 0, 0.5);
     -fx-text-fill: white;
 }
 
 .menu-item:focused {
-     -fx-background-color: #007722;
+    -fx-background-color: #777700;
 }
 
 .menu-item:focused .label {
     -fx-text-fill: white;
 }
 
-.context-menu {
-    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
-}
-
 .text-field {
-    -fx-background: #005522;
-    -fx-prompt-text-fill: gold;
+    -fx-background: #555500;
+    -fx-prompt-text-fill: black;
     -fx-text-fill: white;
     -fx-opacity: 0.5;
 }
 
 .text-field:focused {
     -fx-base: gray;
-    -fx-text-fill: #003311;
+    -fx-text-fill: #333300;
 }
 
 .text-area {
@@ -45,45 +41,43 @@
 }
 
 .tab-pane {
-    -fx-text-fill: #005522;
-    -fx-background-color: rgba(0, 150, 0, 0.0);
+    -fx-text-fill: #555500;
+    -fx-background-color: rgba(150, 150, 0, 0.0);
 }
+
 .list-view {
-    -fx-background-color: rgba(0, 100, 0, 0.1);
+    -fx-background-color: rgba(100, 100, 0, 0.1);
 }
+
 .left-tabs .list-cell {
-    -fx-text-fill: #005522;
-    -fx-background-color: rgba(0, 160, 0, 0.15);
+    -fx-background-color: rgba(100, 100, 0, 0.15);
 }
 
 .left-tabs .list-cell:even {
-    -fx-text-fill: #005522;
-    -fx-background-color: rgba(0, 100, 0, 0.15);
-}
-
-.left-tabs .list-cell:selected {
-    -fx-text-fill: white;
-    -fx-background-color: #007722;
+    -fx-background-color: rgba(160, 160, 0, 0.15);
 }
 
 .left-tabs .list-cell:hover {
     -fx-text-fill: white;
-    -fx-background-color: #007722;
+    -fx-background-color: #777700;
 }
 
-.left-tabs {
-    -fx-background-color: #C5E9CA;
+.left-tabs .list-cell:selected {
+    -fx-text-fill: white;
+    -fx-background-color: #777700;
 }
+
 .scroll-bar .thumb{
-    -fx-background-color: #C5E9CA;
+    -fx-background-color: #E9E9C5;
     -fx-background-insets: 0;
     -fx-background-radius: 0;
 }
 .scroll-bar {
-    -fx-background-color: #C5F4DA;
+    -fx-background-color: #F4F4C5;
     -fx-background-insets: 0;
     -fx-background-radius: 0;
 }
+
 .scroll-pane {
     -fx-opacity: 0.5;
 }
@@ -121,23 +115,14 @@
 }
 
 .button {
-    -fx-text-fill: #005522;
+    -fx-text-fill: #555500;
 }
 
 .combo-box .list-cell {
-    -fx-text-fill: #005522;
+    -fx-text-fill: #555500;
 }
 
 .tab-label {
-    -fx-text-fill: #005522;
+    -fx-text-fill: #555500;
 }
 
-.text-area {
-    -fx-text-fill: #000000;
-    -fx-background: #FFFFFF;
-}
-
-.menu .label {
-    -fx-text-fill: #005522;
-    -fx-background: rgba(0, 100, 0, 0.4);
-}

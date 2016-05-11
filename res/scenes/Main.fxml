@@ -38,6 +38,7 @@
                   <String fx:value="Groovy" />
                   <String fx:value="Python" />
                   <String fx:value="JavaScript" />
+                  <String fx:value="Clojure" />
                 </FXCollections>
               </items>
 	        </ComboBox>
