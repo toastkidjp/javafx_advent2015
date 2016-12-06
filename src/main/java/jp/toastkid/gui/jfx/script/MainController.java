@@ -4,8 +4,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.apache.commons.lang3.StringUtils;
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -15,16 +13,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
 import jp.toastkid.libs.ScriptRunner;
 import jp.toastkid.models.Language;
 
+import org.apache.commons.lang3.StringUtils;
+import org.fxmisc.richtext.CodeArea;
 
 /**
  * JavaFX のコントローラ.
@@ -43,10 +43,10 @@ public final class MainController implements Initializable {
     public HBox scripterArea;
     /** script input. */
     @FXML
-    public TextArea scripterInput;
+    public CodeArea scripterInput;
     /** script output. */
     @FXML
-    public TextArea scripterOutput;
+    public CodeArea scripterOutput;
 
     /** names of script language. */
     @FXML
@@ -92,7 +92,7 @@ public final class MainController implements Initializable {
         if (StringUtils.isEmpty(result)) {
             return;
         }
-        scripterOutput.setText(result);
+        scripterOutput.replaceText(result);
     }
 
     /**

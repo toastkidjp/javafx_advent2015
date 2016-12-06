@@ -34,6 +34,8 @@ dependencies {
     compile 'org.eclipse.collections:eclipse-collections:8.0.0'
     compile 'org.apache.commons:commons-lang3:3.4'
 
+    compile 'org.fxmisc.richtext:richtextfx:0.7-M2'
+
     testCompile 'junit:junit:4.11'
 }
 compileJava {
