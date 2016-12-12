@@ -4,6 +4,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.apache.commons.lang3.StringUtils;
+import org.fxmisc.richtext.CodeArea;
+import org.fxmisc.richtext.LineNumberFactory;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -19,12 +23,8 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
 import jp.toastkid.libs.ScriptRunner;
 import jp.toastkid.models.Language;
-
-import org.apache.commons.lang3.StringUtils;
-import org.fxmisc.richtext.CodeArea;
 
 /**
  * JavaFX のコントローラ.
@@ -74,6 +74,8 @@ public final class MainController implements Initializable {
             }
         );
 
+        scripterInput.setParagraphGraphicFactory(LineNumberFactory.get(scripterInput));
+        scripterOutput.setParagraphGraphicFactory(LineNumberFactory.get(scripterOutput));
         scripterInput.setOnKeyPressed((e) -> {
             if (RUN_SCRIPT.match(e)) {
                 runScript();
