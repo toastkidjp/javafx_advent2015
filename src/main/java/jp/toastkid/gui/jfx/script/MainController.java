@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import org.apache.commons.lang3.StringUtils;
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
+import org.reactfx.Subscription;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -23,6 +24,7 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import jp.toastkid.highlight.GroovyHighlight;
 import jp.toastkid.libs.ScriptRunner;
 import jp.toastkid.models.Language;
 
@@ -57,6 +59,8 @@ public final class MainController implements Initializable {
     @FXML
     public TextField scriptName;
 
+    private Subscription subscription;
+
     /** 関数群. */
     private ScriptRunner func;
     /** Stage. */
@@ -81,6 +85,7 @@ public final class MainController implements Initializable {
                 runScript();
             }
         });
+        subscription = new GroovyHighlight(scripterInput).highlight();
     }
 
     /**
@@ -147,6 +152,7 @@ public final class MainController implements Initializable {
             Application.setUserAgentStylesheet("MODENA");
             stylesheets.add(Style.getPath(styleName));
         }
+        stylesheets.add(getClass().getClassLoader().getResource("keywords.css").toExternalForm());
     }
 
     /**
